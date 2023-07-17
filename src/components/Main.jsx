@@ -28,19 +28,19 @@ export default function Main({
 
   return (
     <div className="main">
-      <Header {...headerData} socialMediaLinks={socialMediaLinks} />
-      {width > 500 && (
+      {/* <Header {...headerData} socialMediaLinks={socialMediaLinks} /> */}
+      {/* {width > 500 && (
         <>
           <LeftPanel {...socialMediaLinks}></LeftPanel>
           <RightPanel emails={emails}></RightPanel>
         </>
-      )}
+      )} */}
 
       <div className="wrapper">
         <Routes>
-          <Route path="/" element={<AllSections {...userData} />} />
+          {/* <Route path="/" element={<AllSections {...userData} />} /> */}
           <Route
-            path="/build-your-portfolio"
+            path="/"
             element={
               <Suspense fallback={<h1>Loading...</h1>}>
                 <LazyPortfolioBuilder />
@@ -57,8 +57,8 @@ export default function Main({
           />
         </Routes>
       </div>
-      {width <= 500 && <LeftPanel {...socialMediaLinks} />}
-      <Footer {...footerData} />
+      {/* {width <= 500 && <LeftPanel {...socialMediaLinks} />}
+      <Footer {...footerData} /> */}
     </div>
   );
 }

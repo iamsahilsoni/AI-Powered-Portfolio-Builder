@@ -8,8 +8,8 @@ class Instructions extends Component {
         <div className="form-heading">Instructions</div>
         <div>
           <h3>
-            Welcome to BuildYourPortfolio! If you would like to use my portfolio
-            as a template, follow the steps below.
+            Welcome to AI Powered Portfolio Builder! A tool helps you build your
+            portfolio in single shot.
           </h3>
         </div>
         <div>

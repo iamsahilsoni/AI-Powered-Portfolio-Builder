@@ -12,6 +12,7 @@ import {
 } from "./forms";
 import "./PortfolioBuilder.css";
 import AppData from "./emptyData";
+import UploadFiles from "./components/upload-files.component";
 
 const previewModalStyles = {
   overlay: {
@@ -205,6 +206,19 @@ class PortfolioBuilder extends Component {
             Please save the current form before previewing or proceeding to the
             next form.
           </p>
+        </div>
+        <div
+          className="container"
+          style={
+            this.state.activeSection !== 0
+              ? { display: "none" }
+              : { width: "auto", margin: "10px" }
+          }>
+          <div style={{ margin: "20px 0" }}>
+            <h4>Upload your already built Resume for parsing</h4>
+          </div>
+
+          <UploadFiles />
         </div>
         <div className="form-section">{this.renderSectionContent()}</div>
 
