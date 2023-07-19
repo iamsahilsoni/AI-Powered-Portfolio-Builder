@@ -15,15 +15,16 @@ export default class UploadFiles extends Component {
       progress: 0,
       message: "",
       fileInfos: [],
+      returnedJSON: [],
     };
   }
 
   componentDidMount() {
-    UploadService.getFiles().then((response) => {
-      this.setState({
-        fileInfos: response.data,
-      });
-    });
+    // UploadService.getFiles().then((response) => {
+    //   this.setState({
+    //     fileInfos: response.data,
+    //   });
+    // });
   }
 
   upload() {
@@ -39,25 +40,21 @@ export default class UploadFiles extends Component {
         progress: Math.round((100 * event.loaded) / event.total),
       });
     })
+      .then((resp) => {
+        return JSON.parse(resp.data);
+      })
       .then((response) => {
-        this.setState({
-          message: response.data.message,
-        });
-        return UploadService.getFiles();
-      })
-      .then((files) => {
-        this.setState({
-          fileInfos: files.data,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          progress: 0,
-          message: "Could not upload the file!",
-          currentFile: undefined,
-        });
+        this.setState(
+          {
+            returnedJSON: [response],
+            message:
+              "The AI did the magic, please check the Forms prefilled next.",
+          },
+          () => {
+            this.props.updateParentData(response);
+          }
+        );
       });
-
     this.setState({
       selectedFiles: undefined,
     });
@@ -70,12 +67,18 @@ export default class UploadFiles extends Component {
   }
 
   render() {
-    const { selectedFiles, currentFile, progress, message, fileInfos } =
-      this.state;
+    const {
+      selectedFiles,
+      currentFile,
+      progress,
+      message,
+      fileInfos,
+      returnedJSON,
+    } = this.state;
 
     return (
       <div>
-        {currentFile && (
+        {currentFile && returnedJSON.length === 0 && (
           <div className="progress mb-3">
             <div
               className="progress-bar progress-bar-info progress-bar-striped"
@@ -83,8 +86,11 @@ export default class UploadFiles extends Component {
               aria-valuenow={progress}
               aria-valuemin="0"
               aria-valuemax="100"
-              style={{ width: progress + "%" }}>
-              {progress}%
+              style={{ width: progress + "%", display: "contents" }}>
+              Uploaded {progress}%
+              {progress === 0
+                ? ""
+                : ": Please wait, parsing is in progress... !"}
             </div>
           </div>
         )}

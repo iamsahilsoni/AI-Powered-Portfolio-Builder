@@ -98,6 +98,10 @@ class PortfolioBuilder extends Component {
     });
   };
 
+  updateParentData = (data) => {
+    this.setState({ appData: data });
+  };
+
   // HOC this gets a component and return a same component with added props,
   // Need it, as i have array of components and adding props later on
   SelectedFormComponentWithProps = (Component, props) => {
@@ -152,30 +156,31 @@ class PortfolioBuilder extends Component {
           </button>
           <button
             onClick={() => this.togglePreview()}
-            disabled={
-              this.state.activeSection === 0 || !this.state.isCurrFormSaved
-            }>
+            // disabled={
+            //   this.state.activeSection === 0 || !this.state.isCurrFormSaved
+            // }
+          >
             Preview
           </button>
-          {this.state.activeSection + 1 === this.forms.length && (
-            <button
-              className="generate-json"
-              disabled={!this.state.isCurrFormSaved}
-              onClick={() => {
-                const json = JSON.stringify(this.state.appData);
-                const blob = new Blob([json], { type: "application/json" });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.download = "data.json";
-                a.href = url;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-              }}>
-              Generate JSON
-            </button>
-          )}
+          {/* {this.state.activeSection + 1 === this.forms.length && ( */}
+          <button
+            className="generate-json"
+            // disabled={!this.state.isCurrFormSaved}
+            onClick={() => {
+              const json = JSON.stringify(this.state.appData);
+              const blob = new Blob([json], { type: "application/json" });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.download = "data.json";
+              a.href = url;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }}>
+            Generate JSON
+          </button>
+          {/* )} */}
           <button
             onClick={() => {
               this.state.isCurrFormSaved = false;
@@ -218,7 +223,7 @@ class PortfolioBuilder extends Component {
             <h4>Upload your already built Resume for parsing</h4>
           </div>
 
-          <UploadFiles />
+          <UploadFiles updateParentData={this.updateParentData} />
         </div>
         <div className="form-section">{this.renderSectionContent()}</div>
 
