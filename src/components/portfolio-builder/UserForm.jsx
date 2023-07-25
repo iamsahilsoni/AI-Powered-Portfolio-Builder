@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./UserForm.css";
 
 const UserForm = ({ dataJson }) => {
   const [username, setUsername] = useState("");
   const [status, setStatus] = useState("");
   const [showModal, setShowModal] = useState(false);
+
+  const handleGoToPortfolio = () => {
+    if (username) {
+      const portfolioLink = `http://localhost:3000/${username}`;
+      window.open(portfolioLink, "_blank"); // Open the link in a new tab
+    }
+  };
 
   const handleCheckUser = async () => {
     try {
@@ -77,30 +85,61 @@ const UserForm = ({ dataJson }) => {
   };
 
   return (
-    <div>
-      {status === "userFound" && (
-        <p>Duplicate username. Please try another username.</p>
-      )}
-      {status === "success" && (
-        <div>
-          <p>User data uploaded successfully!</p>
-          <p>Your portfolio is published on http://localhost:3000/{username}</p>
-          <button onClick={handleCopyToClipboard}>Copy URL</button>
-        </div>
-      )}
-      {status === "error" && <p>Error occurred while processing the request</p>}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+      <div className="user-form" style={{ margin: "10px" }}>
+        {status === "userFound" && (
+          <p className="error-message">
+            Duplicate username. Please try another username.
+          </p>
+        )}
+        {status === "success" && (
+          <div className="success-message">
+            <p>User data uploaded successfully!</p>
+            <p>
+              Your portfolio is published on{" "}
+              <a
+                href={`http://localhost:3000/${username}`}
+                target="_blank"
+                rel="noopener noreferrer">
+                http://localhost:3000/{username}
+              </a>
+            </p>
+            <div className="buttons">
+              <button className="copy-button" onClick={handleCopyToClipboard}>
+                Copy URL
+              </button>
+              <button className="go-to-button" onClick={handleGoToPortfolio}>
+                Go to Portfolio
+              </button>
+            </div>
+          </div>
+        )}
+        {status === "error" && (
+          <p className="error-message">
+            Error occurred while processing the request
+          </p>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+        {(status === "error" || status === "userFound" || status === "") && (
+          <form className="form" onSubmit={handleSubmit}>
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };

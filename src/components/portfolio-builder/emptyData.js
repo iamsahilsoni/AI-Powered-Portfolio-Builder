@@ -24,13 +24,13 @@ const sampleAppObject = {
     introInfo: {
       name: "",
       status: "",
-      displayPic: "./assets/",
+      displayPic: "./assets/static_display_pic1.png",
       summary: "",
     },
     aboutInfo: {
       firstPara: "",
       secondPara: "",
-      displayPic: "./assets/",
+      displayPic: "./assets/static_display_pic2.jpg",
       skillsList: [""],
     },
   },

@@ -28,6 +28,22 @@ const previewModalStyles = {
   },
 };
 
+const userNameModalStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    zIndex: 100,
+  },
+  content: {
+    top: "30%",
+    maxHeight: "50vh",
+    left: "100px",
+    right: "100px",
+    overflow: "auto",
+    padding: 0,
+    zIndex: 100,
+  },
+};
+
 Modal.setAppElement("#root");
 
 class PortfolioBuilder extends Component {
@@ -251,7 +267,8 @@ class PortfolioBuilder extends Component {
         </Modal>
         <Modal
           isOpen={this.state.getUser}
-          onRequestClose={() => this.getUser()}>
+          onRequestClose={() => this.getUser()}
+          style={userNameModalStyles}>
           <div>
             <UserForm dataJson={this.state.appData} />
           </div>

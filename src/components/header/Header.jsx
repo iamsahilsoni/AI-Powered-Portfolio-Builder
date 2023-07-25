@@ -69,11 +69,11 @@ function Header(props) {
 
   return (
     <div className={`header ${scrollDirection === "down" ? "hide" : "show"}`}>
-      <div className="logo">
+      {/* <div className="logo">
         <Router.Link to="/" reloadDocument={true}>
           <img src={props.logoSrc} alt="Logo" />
         </Router.Link>
-      </div>
+      </div> */}
       {window.location.pathname === "/" ? (
         <>
           <div className="sections">

@@ -1,0 +1,82 @@
+/* CSS styles for UserForm component */
+.user-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.error-message {
+  margin-bottom: 15px;
+  color: red;
+  font-weight: bold;
+}
+
+.success-message {
+  margin-bottom: 15px;
+  color: green;
+}
+
+.success-message a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.success-message a:hover {
+  text-decoration: underline;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.copy-button,
+.go-to-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copy-button {
+  margin-right: 10px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+}
+
+.go-to-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.go-to-button:hover {
+  background-color: #218838;
+}
