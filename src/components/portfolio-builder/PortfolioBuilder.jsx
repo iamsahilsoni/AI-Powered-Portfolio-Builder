@@ -13,6 +13,7 @@ import {
 import "./PortfolioBuilder.css";
 import AppData from "./emptyData";
 import UploadFiles from "./components/upload-files.component";
+import UserForm from "./UserForm";
 
 const previewModalStyles = {
   overlay: {
@@ -35,6 +36,7 @@ class PortfolioBuilder extends Component {
     this.state = {
       activeSection: 0,
       openPreview: false,
+      getUser: false,
       appData: AppData,
       isCurrFormSaved: false,
     };
@@ -145,6 +147,10 @@ class PortfolioBuilder extends Component {
   togglePreview() {
     this.setState({ ...this.state, openPreview: !this.state.openPreview });
   }
+
+  getUser() {
+    this.setState({ ...this.state, getUser: !this.state.getUser });
+  }
   render() {
     return (
       <div className="portfolioBuilder">
@@ -162,9 +168,17 @@ class PortfolioBuilder extends Component {
           >
             Preview
           </button>
-          {/* {this.state.activeSection + 1 === this.forms.length && ( */}
           <button
             className="generate-json"
+            onClick={() => this.getUser()}
+            // disabled={
+            //   this.state.activeSection === 0 || !this.state.isCurrFormSaved
+            // }
+          >
+            Deploy Portfolio
+          </button>
+          {/* {this.state.activeSection + 1 === this.forms.length && ( */}
+          <button
             // disabled={!this.state.isCurrFormSaved}
             onClick={() => {
               const json = JSON.stringify(this.state.appData);
@@ -233,6 +247,13 @@ class PortfolioBuilder extends Component {
           style={previewModalStyles}>
           <div style={{ pointerEvents: "none" }}>
             <Preview {...this.state.appData} />
+          </div>
+        </Modal>
+        <Modal
+          isOpen={this.state.getUser}
+          onRequestClose={() => this.getUser()}>
+          <div>
+            <UserForm dataJson={this.state.appData} />
           </div>
         </Modal>
       </div>
