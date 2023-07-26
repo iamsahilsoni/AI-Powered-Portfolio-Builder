@@ -1,3 +1,5 @@
+import os
+
 import openai
 import json
 import re
@@ -21,8 +23,8 @@ def read_api_key(api_key_file):
     with open(api_key_file, "r") as file:
         return file.read().strip()
 
-def resume_parser_openai(input_text):
-    prompt_file = "prompt.txt"
+def resume_parser_openai(input_text, prompt_file):
+
     prompt = read_prompt_from_file(prompt_file)
 
     api_key_file = "api_key.txt"
@@ -36,6 +38,7 @@ def resume_parser_openai(input_text):
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
+        # model="gpt-3.5-turbo-16k",
         messages=messages,
         max_tokens=1000,
         n=1,
@@ -54,7 +57,7 @@ def resume_parser_openai(input_text):
 def resume_parser_json(input):
 
     # Extract Experiences
-    experiences = re.findall(r'Company:\n- Name: (.+)\n- Position: (.+)\n- Duration: (.+)\n- Description:((?:.+\n)+)', input)
+    experiences = re.findall(r'Name: (.+)\n- Position: (.+)\n- Duration: (.+)\n- Description:((?:.+\n)+)', input)
     experiences_list = []
     for experience in experiences:
         company, position, duration, description = experience
@@ -67,7 +70,7 @@ def resume_parser_json(input):
         })
 
     # Extract Project Work
-    project_work = re.findall(r'Project Heading:\n- Title: (.+)\n- Project Description: (.+)\n- Technologies: (.+)', input)
+    project_work = re.findall(r'Title: (.+)\n- Project Description: (.+)\n- Technologies: (.+)', input)
     project_work_list = []
     for project in project_work:
         project_heading, project_desc, technologies = project
@@ -88,17 +91,21 @@ def resume_parser_json(input):
         
     # Extract Intro Info
     try:
-        intro_info = re.findall(r'Intro Info:\n- Name: (.+)\n- Status: (.+)', input)
+        intro_info = re.findall(r'Intro Info\n- Name: (.+)\n- Status: (.+)', input)
         name, status = intro_info[0]
     except:
         name, status = "",""
-        
-    # Extract About Info
+
+
     try:
-        about_info = re.findall(r'About Info:\n- First Paragraph: (.+)\n- Second Paragraph: (.+)', input)
-        first_para, second_para = about_info[0]
-    except:
-        first_para, second_para = "",""
+        first_para = re.search(r'First Paragraph: (.+)\n', input).group(1)
+    except AttributeError:
+        first_para = ""
+
+    try:
+        second_para = re.search(r'Second Paragraph: (.+)\n', input).group(1)
+    except AttributeError:
+        second_para = ""
 
     # Extract LinkedIn
     try:
@@ -183,11 +190,33 @@ def resume_parser_json(input):
     return json_output
 
 
+def read_file_content(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            return content
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' could not be found.")
+        return ""
+    except Exception as e:
+        print(f"Error: An error occurred while reading the file '{file_path}': {e}")
+        return ""
+
 
 if __name__ == '__main__':
-    input_text = extract_text_from_pdf('resume.pdf')
-    response = resume_parser_openai(input_text)
+
+    # Extract Text from PDF
+    input_text = extract_text_from_pdf('resume_2.pdf')
+
+    # Extract Data from Resume Text using OpenAI and append to response.txt
+    resume_parser_openai(input_text, 'prompt.txt')
+
+    # Read response.txt
+    response = read_file_content('response.txt')
+
+    # Parse text using Regex and populate JSON
     json_output = resume_parser_json(response)
+
     print(json_output)
     with open("data.json", "w") as outfile:
         outfile.write(json_output)
