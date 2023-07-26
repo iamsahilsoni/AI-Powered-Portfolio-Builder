@@ -12,11 +12,13 @@ function AllSections({
   contactInfo,
   introInfo,
   aboutInfo,
+  image1,
+  image2
 }) {
   return (
     <div className="all-sections">
-      <Introduction {...introInfo} />
-      <About {...aboutInfo} />
+      <Introduction {...introInfo} image1={image1} image2={image2} />
+      <About {...aboutInfo} image1={image1} image2={image2}/>
       <Experience experiences={experiences} />
       <Work projectWork={projectWork} />
       <Contact {...contactInfo} />

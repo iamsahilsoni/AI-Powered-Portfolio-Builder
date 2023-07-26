@@ -32,10 +32,11 @@ function About(props) {
         </div>
         <div className="right-section ">
           <img
-            src={props.displayPic}
+            src={props.image2}
             alt="display pic 2"
             className="display-pic"
           />
+          {/* instead of source render the image */}
         </div>
       </div>
     </div>

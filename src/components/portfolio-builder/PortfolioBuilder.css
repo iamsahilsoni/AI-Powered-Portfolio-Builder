@@ -145,3 +145,26 @@ button {
   color: #000;
   font-weight: bold;
 }
+
+
+
+
+/* my custom css for styling input image tag */
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.custom-file-upload:hover {
+  background-color: #45a049;
+}
+
+.image-name {
+  padding: 10px;
+}
