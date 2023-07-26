@@ -53,10 +53,11 @@ class PortfolioBuilder extends Component {
       activeSection: 0,
       openPreview: false,
       getUser: false,
-      appData: {...AppData, image1: '', image2: ''},
+      appData: { ...AppData, image1: "", image2: "" },
       isCurrFormSaved: false,
-      image1Name: '',
-      image2Name: '',
+      image1Name: "",
+      image2Name: "",
+      showUploadImage: false,
     };
   }
 
@@ -120,6 +121,7 @@ class PortfolioBuilder extends Component {
 
   updateParentData = (data) => {
     this.setState({ appData: data });
+    this.setState({ showUploadImage: true });
   };
 
   // HOC this gets a component and return a same component with added props,
@@ -173,12 +175,12 @@ class PortfolioBuilder extends Component {
   handleImageUpload = (event, imageKey) => {
     // if the image field is already set, return
     if (this.state.appData[imageKey]) return;
-  
+
     const file = event.target.files[0];
     const reader = new FileReader();
-  
+
     reader.onloadend = () => {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         appData: {
           ...prevState.appData,
           [imageKey]: reader.result,
@@ -188,12 +190,11 @@ class PortfolioBuilder extends Component {
 
     this.setState({
       ...this.state,
-      [imageKey + 'Name']: event.target.files[0].name
+      [imageKey + "Name"]: event.target.files[0].name,
     });
-  
+
     reader.readAsDataURL(file);
-  }
-  
+  };
 
   render() {
     return (
@@ -282,36 +283,35 @@ class PortfolioBuilder extends Component {
           </div>
 
           <UploadFiles updateParentData={this.updateParentData} />
+          {this.state.showUploadImage && (
+            <div>
+              <label htmlFor="image1-upload" className="custom-file-upload">
+                Upload Image1
+              </label>
+              <input
+                id="image1-upload"
+                type="file"
+                accept="image/*"
+                onChange={(event) => this.handleImageUpload(event, "image1")}
+                style={{ display: "none" }}
+              />
+              <div className="image-name">{this.state.image1Name}</div>
 
-
-<label htmlFor="image1-upload" className="custom-file-upload">
-  Upload Image1
-</label>
-<input
-  id="image1-upload"
-  type="file"
-  accept="image/*"
-  onChange={(event) => this.handleImageUpload(event, 'image1')}
-  style={{ display: 'none' }}
-/>
-<div className="image-name">{this.state.image1Name}</div>
-
-<label htmlFor="image2-upload" className="custom-file-upload">
-  Upload Image2
-</label>
-<input
-  id="image2-upload"
-  type="file"
-  accept="image/*"
-  onChange={(event) => this.handleImageUpload(event, 'image2')}
-  style={{ display: 'none' }}
-/>
-<div className="image-name">{this.state.image2Name}</div>
-
-
-
-
+              <label htmlFor="image2-upload" className="custom-file-upload">
+                Upload Image2
+              </label>
+              <input
+                id="image2-upload"
+                type="file"
+                accept="image/*"
+                onChange={(event) => this.handleImageUpload(event, "image2")}
+                style={{ display: "none" }}
+              />
+              <div className="image-name">{this.state.image2Name}</div>
+            </div>
+          )}
         </div>
+
         <div className="form-section">{this.renderSectionContent()}</div>
 
         <Modal
@@ -337,8 +337,7 @@ class PortfolioBuilder extends Component {
 
 export default PortfolioBuilder;
 
-
-// upload image and change it to base 64 , populate fields in appData , 
+// upload image and change it to base 64 , populate fields in appData ,
 // post call , images saved in data
 // 1) image uplaoded first , then display pics got empty - images should not be overrided
 
