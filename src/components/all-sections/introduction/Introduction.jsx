@@ -18,7 +18,7 @@ function Introduction(props) {
         </div>
         <div className="intro-image-section">
           <img
-            src={props.displayPic}
+            src={props.image1}
             alt="display pic 1"
             className="display-pic"
           />

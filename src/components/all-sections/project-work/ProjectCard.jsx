@@ -14,13 +14,13 @@ function ProjectCard({
   return (
     <div className={`project-card ${idx % 2 ? "odd" : "even"}`}>
       <div className="project-pic">
-        <NewTabAnchor href={extUrl}>
+        {/* <NewTabAnchor href={extUrl}>
           <img
             src={imgSrc}
             alt="project-screenshot"
             className="project-screenshot"
           />
-        </NewTabAnchor>
+        </NewTabAnchor> */}
       </div>
       <div className="project-details">
         <div className="project-heading">{project_heading}</div>

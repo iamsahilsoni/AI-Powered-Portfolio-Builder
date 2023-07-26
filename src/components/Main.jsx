@@ -37,7 +37,7 @@ export default function Main() {
         .then((response) => response.json())
         .then((data) => {
           // Handle the fetched data as needed
-          const { headerData, footerData, socialMediaLinks, emails, userData } =
+          const { headerData, footerData, socialMediaLinks, emails, userData, image1, image2 } =
             data.data;
           setAppData({ ...data.data });
           // Update appData with the extracted fields
@@ -82,8 +82,13 @@ export default function Main() {
           />
           <Route
             path="/:username"
-            element={<AllSections {...appData.userData} />}
-          />
+            element={
+              <AllSections 
+                {...appData.userData} 
+                image1={appData.image1 ?? "./assets/static_display_pic1.png"} 
+                image2={appData.image2 ?? "./assets/static_display_pic2.jpg"}
+              />
+            }          />
           <Route
             path="*"
             element={
