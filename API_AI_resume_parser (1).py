@@ -31,8 +31,13 @@ def parse_resume():
         try:
             input_text = extract_text_from_pdf('resume_new1.pdf')
 
-            # Process the extracted text and generate the JSON output
-            response = resume_parser_openai(input_text)
+            # Extract Data from Resume Text using OpenAI and append to response.txt
+            resume_parser_openai(input_text, prompt_file='prompt.txt')
+
+            # Read response.txt
+            response = read_file_content('response.txt')
+
+            # Parse text using Regex and populate JSON
             json_output = resume_parser_json(response)
             
             return jsonify(json_output), 200

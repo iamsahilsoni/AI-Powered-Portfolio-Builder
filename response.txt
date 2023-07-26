@@ -1,29 +1,34 @@
-Contact Info:
+Contact Info
 - Email: pahwar@uwindsor.ca
 
-Intro Info:
+Intro Info
 - Name: Rishabh Pahwa
 - Status: Senior Software Engineer
 
-About Info: 
-- First Paragraph: Rishabh Pahwa is a skilled Senior Software Engineer with over 3 years of experience in SAP ERP projects for esteemed clients such as Airbus. He has a proven track record of providing comprehensive software solutions and driving innovation to enhance business performance. With a strong background in Agile environments, Rishabh effectively delivers software design, testing, and development solutions for global clients using his analytical and problem-solving abilities.
-- Second Paragraph: Rishabh is rapidly adaptable and has extensive experience in a variety of technologies, including Android App development, Web development, Machine Learning, Linux administration, and Bash Scripting. He has acquired these skills through academic projects and active involvement in technical workshops and events. Along with technical expertise, Rishabh possesses refined communication, teamwork, and interpersonal skills gained through active collaboration with clients, colleagues, and project team members.
+About Info
+- First Paragraph: With over 3 years of experience in SAP ERP projects for esteemed clients such as Airbus, I have developed comprehensive software solutions and driven innovation to enhance business performance. Skilled in Agile environments, I effectively deliver software design, testing, and development solutions for global clients using strong analytical and problem-solving abilities.
+- Second Paragraph: In addition to my SAP expertise, I have a diverse skill set that includes Android App development, Web development, Machine Learning, Linux administration, and Bash Scripting. I have acquired these skills through academic projects and active involvement in technical workshops and events. I am a rapid learner, adaptable to new technologies. With refined communication, teamwork, and interpersonal skills, I am able to collaborate effectively with clients, colleagues, and project team members.
 
 LinkedIn: linkedin.com/in/rishabh-pahwa
 Github: github.com/r1shabhpahwa
 Email: pahwar@uwindsor.ca
 
-Summary: Skilled Senior Software Engineer with experience in SAP ERP projects, delivering comprehensive software solutions and driving innovation for clients such as Airbus. Experienced in Agile environments with a strong background in various technologies. 
+Summary: Experienced Senior Software Engineer skilled in SAP ERP projects with a strong focus on delivering innovative software solutions to enhance business performance.
 
-Company:
+Company
 - Name: Sopra Steria
 - Position: Senior Software Engineer
 - Duration: Aug 2019 - Aug 2022
-- Description: At Sopra Steria, Rishabh managed a critical project for Airbus for nearly 3 years as the technical owner. He showcased strong coding and debugging skills in developing and maintaining an SAP WebDynpro based portal for seamless technical data submission by the client's part suppliers. Rishabh mentored and trained a team of 3 junior software engineers and exhibited strong reliability in ensuring timely delivery of user stories and code enhancements while effectively addressing over 100 medium to high-level production incidents and change requests. His in-depth functional knowledge of the application and technical expertise in key areas such as SAP WebDynpro, OO Reports & ALV, BADI, BAPI, IDOC, Data Dictionary, Performance Tuning, and SQL optimization contributed to the success of the project. Rishabh also developed thorough technical documentation and built a chatbot using IBM Watson to aid in the onboarding of new team members.
+- Description: Managed a critical project for Airbus for nearly 3 years as the technical owner, showcasing strong coding and debugging skills in developing and maintaining an SAP WebDynpro based portal for seamless technical data submission by the client's part suppliers. Mentored and trained a team of 3 junior software engineers, resulting in increased team productivity. Demonstrated reliability and addressed over 100 medium to high-level production incidents and change requests. Possesses in-depth functional knowledge of SAP WebDynpro, OO Reports & ALV, BADI, BAPI, IDOC, Data Dictionary, Performance Tuning, and SQL optimization. Developed thorough technical documentation and built a chatbot using IBM Watson to aid in team onboarding.
 
-Project Heading:
+Project
 - Title: ZeroWaste
-- Project Description: Collaborated with a team of 8 students to create and present ZeroWaste, a solution addressing common challenges in household waste management. The project tackled issues such as forgetfulness, e-waste recycling, kitchen waste disposal, automation, and mis-recycling. Technologies used included HTML, CSS, JavaScript, Angular, MongoDB, and Docker.
+- Project Description: Collaborated with a team of 8 students to create and present a solution addressing common challenges in household waste management, including forgetfulness, e-waste recycling, kitchen waste disposal, automation, and mis-recycling.
 - Technologies: HTML, CSS, JavaScript, Angular, MongoDB, Docker
 
-Skills: JAVA, C, C++, ABAP, JavaScript, Python, Bash Scripting, Linux, macOS, Windows, MySQL, Oracle SQL, MS-SQL Server, MongoDB, PowerPoint, Excel, MS Visio, Tableau, Git, Service Now, JIRA, Confluence, HP QC, Android Studio, Docker, Jenkins, MS Office
+Skills:
+- Programming Languages: JAVA, C, C++, ABAP, JavaScript, Python, Bash Scripting
+- Operating Systems: Linux, macOS, Windows
+- Database Systems: MySQL, Oracle SQL, MS-SQL Server, MongoDB
+- Data Visualization: PowerPoint, Excel, MS Visio, Tableau
+- Tools: Git, Service Now, JIRA, Confluence, HP QC, Android Studio, Docker, Jenkins, MS Office

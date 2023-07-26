@@ -1,33 +1,40 @@
 Given the following resume, create content for the user's online portfolio. Your task is to generate compelling copy for specific sections of the portfolio as outlined below. If there is insufficient data to generate content for a particular section, please indicate it with the statement: "Unable to generate content due to lack of provided information."
 
-You will extract the information in the format below:
-Contact Info:
+You will extract the information in the format below and follow the instructions given:
+
+Contact Info
 - Email:
 
-Intro Info:
+Intro Info
 - Name:
 - Status:
 
-About Info: (Draft a succinct yet engaging 'About Info' section and denote sections firstPara and secondPara)
+About Info [Draft a succinct yet engaging 'About Info' section and denote sections as below]
 - First Paragraph:
 - Second Paragraph:
 
-LinkedIn: Extract the user's LinkedIn profile URL.
-Github: Extract the user's GitHub profile URL.
-Email: Extract the user's email address.
+LinkedIn: [Extract the user's LinkedIn profile URL]
+Github: [Extract the user's GitHub profile URL]
+Email: [Extract the user's email address]
 
-Summary: Compose an engaging opening statement to introduce the user in one line.
+Summary: [Compose an engaging opening statement to introduce the user in one line]
 
-Company:
+Company
 - Name:
 - Position:
 - Duration:
-- Description:
+- Description: [Summarise the user's experience in a brief paragraph]
 
-Project Heading:
+[Repeat the Company section for each of the user's experiences.]
+
+Project
 - Title:
 - Project Description:
 - Technologies:
 
-Skills: Extract a list of skills possessed by the user.
+[Repeat the Project section for each of the user's projects]
+
+Skills: [Extract a list of skills possessed by the user]
+
+Use the below resume for extraction -
 
